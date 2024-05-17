@@ -12,7 +12,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Link, Input, Image, Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react";
 
 
-export const Logo = () => (
+const Logo = () => (
   <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
     <path
       clipRule="evenodd"
