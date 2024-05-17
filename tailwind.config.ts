@@ -23,9 +23,6 @@ const config: Config = {
       light: {
         colors: {},
       },
-      dark: {
-        colors: {},
-      },
     },
   })],
 };

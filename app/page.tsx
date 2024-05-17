@@ -12,6 +12,9 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Link, Input, Image, Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react";
 
 
+/**
+ * Renders a logo as an SVG component.
+ */
 const Logo = () => (
   <svg fill="none" height="36" viewBox="0 0 32 32" width="36">
     <path
@@ -60,6 +63,11 @@ export default function Home() {
 
   }, [setIsLoading])
 
+  /**
+   * Sends consent to Didomi.
+   * @async
+   * @returns {Promise<void>} A Promise that resolves when the consent is sent.
+   */
   const sendConsentToDidomi = async () => {
     const consentToPurpose = new CustomEvent("didomi:set-consents", {
       detail: {
@@ -78,8 +86,11 @@ export default function Home() {
     setInputValue('');
   }
 
+  /**
+   * Handles the action of sending an email.
+   */
   const handleSendEmail = () => {
-    setIsLoading(true)
+    setIsLoading(true);
     fetch('/api/tokens', {
       method: 'POST',
       headers: {
@@ -92,6 +103,11 @@ export default function Home() {
     });
   }
 
+  /**
+   * Updates the input value.
+   * 
+   * @param value - The new value for the input.
+   */
   const handleInputValue = (value: string) => {
     setInputValue(value);
   }
@@ -144,7 +160,7 @@ export default function Home() {
                   depths of human experience.
                 </p>
                 <Input
-                  className="mb-3"
+                  className="mb-3 text-black/90"
                   radius="none"
                   onValueChange={handleInputValue}
                   autoFocus
@@ -186,116 +202,111 @@ export default function Home() {
       </Modal>
 
 
-
-      <main className="flex flex-col items-center justify-center min-h-screen bg-gray-900 px-4 md:px-6">
-        <section className="container max-w-4xl py-12 md:py-24 lg:py-32">
-          <div className="grid gap-8 md:grid-cols-2 items-center">
-            <div className="space-y-4">
-              <h1 className="text-4xl font-bold tracking-tighter md:text-5xl lg:text-6xl text-gray-400">Melody Maker</h1>
-              <p className="text-gray-400 max-w-md">
-                Melody Maker is a talented musician who crafts soulful, emotive tracks that captivate listeners. With a
-                unique blend of indie, folk, and electronic influences, their music takes you on a journey through the
-                depths of human experience.
-              </p>
+      <section className="container max-w-4xl py-12 md:py-24 lg:py-32">
+        <div className="grid gap-8 md:grid-cols-2 items-center">
+          <div className="space-y-4">
+            <h1 className="text-4xl font-bold tracking-tighter md:text-5xl lg:text-6xl text-gray-400">Melody Maker</h1>
+            <p className="text-gray-400 max-w-md">
+              Melody Maker is a talented musician who crafts soulful, emotive tracks that captivate listeners. With a
+              unique blend of indie, folk, and electronic influences, their music takes you on a journey through the
+              depths of human experience.
+            </p>
+          </div>
+          <Image
+            radius="none"
+            alt="Melody Maker"
+            className="object-cover"
+            height={600}
+            src="	https://generated.vusercontent.net/placeholder.svg"
+            style={{
+              aspectRatio: "600/600",
+              objectFit: "cover",
+            }}
+            width={600}
+          />
+        </div>
+      </section>
+      <section className="container max-w-4xl pb-12 md:pb-24 lg:pb-32">
+        <h2 className="text-2xl font-bold mb-8 text-gray-400">Albums</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <Link className="group" href="#">
+            <div className="aspect-square overflow-hidden">
+              <Image
+                radius="none"
+                alt="Album Cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                height={300}
+                src="	https://generated.vusercontent.net/placeholder.svg"
+                style={{
+                  aspectRatio: "300/300",
+                  objectFit: "cover",
+                }}
+                width={300}
+              />
             </div>
-            <Image
-              radius="none"
-              alt="Melody Maker"
-              className="object-cover"
-              height={600}
-              src="	https://generated.vusercontent.net/placeholder.svg"
-              style={{
-                aspectRatio: "600/600",
-                objectFit: "cover",
-              }}
-              width={600}
-            />
-          </div>
-        </section>
-        <section className="container max-w-4xl pb-12 md:pb-24 lg:pb-32">
-          <h2 className="text-2xl font-bold mb-8 text-gray-400">Albums</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <Link className="group" href="#">
-              <div className="aspect-square overflow-hidden">
-                <Image
-                  radius="none"
-                  alt="Album Cover"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                  height={300}
-                  src="	https://generated.vusercontent.net/placeholder.svg"
-                  style={{
-                    aspectRatio: "300/300",
-                    objectFit: "cover",
-                  }}
-                  width={300}
-                />
-              </div>
-              <p className="ml-2 mt-2 text-left text-gray-400 group-hover:text-gray-50 transition-colors">
-                Soulful Melodies
-              </p>
-            </Link>
-            <Link className="group" href="#">
-              <div className="aspect-square overflow-hidden">
-                <Image
-                  radius="none"
-                  alt="Album Cover"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                  height={300}
-                  src="	https://generated.vusercontent.net/placeholder.svg"
-                  style={{
-                    aspectRatio: "300/300",
-                    objectFit: "cover",
-                  }}
-                  width={300}
-                />
-              </div>
-              <p className="ml-2 mt-2 text-left text-gray-400 group-hover:text-gray-50 transition-colors">
-                Ethereal Harmonies
-              </p>
-            </Link>
-            <Link className="group" href="#">
-              <div className="aspect-square overflow-hidden">
-                <Image
-                  radius="none"
-                  alt="Album Cover"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                  height={300}
-                  src="	https://generated.vusercontent.net/placeholder.svg"
-                  style={{
-                    aspectRatio: "300/300",
-                    objectFit: "cover",
-                  }}
-                  width={300}
-                />
-              </div>
-              <p className="ml-2 mt-2 text-left text-gray-400 group-hover:text-gray-50 transition-colors">
-                Rhythmic Odyssey
-              </p>
-            </Link>
-            <Link className="group" href="#">
-              <div className="aspect-square overflow-hidden">
-                <Image
-                  radius="none"
-                  alt="Album Cover"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                  height={300}
-                  src="	https://generated.vusercontent.net/placeholder.svg"
-                  style={{
-                    aspectRatio: "300/300",
-                    objectFit: "cover",
-                  }}
-                  width={300}
-                />
-              </div>
-              <p className="ml-2 mt-2 text-left text-gray-400 group-hover:text-gray-50 transition-colors">
-                Emotive Landscapes
-              </p>
-            </Link>
-          </div>
-        </section>
-      </main>
-
-
+            <p className="ml-2 mt-2 text-left text-gray-400 group-hover:text-gray-50 transition-colors">
+              Soulful Melodies
+            </p>
+          </Link>
+          <Link className="group" href="#">
+            <div className="aspect-square overflow-hidden">
+              <Image
+                radius="none"
+                alt="Album Cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                height={300}
+                src="	https://generated.vusercontent.net/placeholder.svg"
+                style={{
+                  aspectRatio: "300/300",
+                  objectFit: "cover",
+                }}
+                width={300}
+              />
+            </div>
+            <p className="ml-2 mt-2 text-left text-gray-400 group-hover:text-gray-50 transition-colors">
+              Ethereal Harmonies
+            </p>
+          </Link>
+          <Link className="group" href="#">
+            <div className="aspect-square overflow-hidden">
+              <Image
+                radius="none"
+                alt="Album Cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                height={300}
+                src="	https://generated.vusercontent.net/placeholder.svg"
+                style={{
+                  aspectRatio: "300/300",
+                  objectFit: "cover",
+                }}
+                width={300}
+              />
+            </div>
+            <p className="ml-2 mt-2 text-left text-gray-400 group-hover:text-gray-50 transition-colors">
+              Rhythmic Odyssey
+            </p>
+          </Link>
+          <Link className="group" href="#">
+            <div className="aspect-square overflow-hidden">
+              <Image
+                radius="none"
+                alt="Album Cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                height={300}
+                src="	https://generated.vusercontent.net/placeholder.svg"
+                style={{
+                  aspectRatio: "300/300",
+                  objectFit: "cover",
+                }}
+                width={300}
+              />
+            </div>
+            <p className="ml-2 mt-2 text-left text-gray-400 group-hover:text-gray-50 transition-colors">
+              Emotive Landscapes
+            </p>
+          </Link>
+        </div>
+      </section>
 
     </main>
   );
