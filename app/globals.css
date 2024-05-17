@@ -31,3 +31,10 @@ body {
     text-wrap: balance;
   }
 }
+
+didomi-if-authenticated:not(:defined) {
+  display: none;
+}
+didomi-if-not-authenticated:not(:defined) {
+  display: none;
+}
